@@ -10,7 +10,7 @@
 
 * Évolution du système socio-fiscal.
 * Périodes concernées : à partir du 01/01/2001.
-* Zones impactées : 
+* Zones impactées :
   - `model\prelevements_obligatoires\impot_revenu\ir.py`
   - `parameters\impot_revenu\decote`
 * Détails :
@@ -2357,8 +2357,8 @@ Par exemple pour :
 
 ```
 class TypesAAHNonCalculable(Enum):
-calculable = u"Calculable"
-intervention_CDAPH_necessaire = u"intervention_CDAPH_necessaire"
+calculable = "Calculable"
+intervention_CDAPH_necessaire = "intervention_CDAPH_necessaire"
 ```
 
 - `False`, ancien index 0, devient `TypesAAHNonCalculable.calculable`
