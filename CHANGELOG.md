@@ -1,5 +1,11 @@
 # Changelog
 
+## 48.2.2 [#1357](https://github.com/openfisca/openfisca-france/pull/1357)
+
+* Changement mineur
+* Détails :
+  - Supprime le keyword unicode `u`, qui n'est plus nécessaire depuis Python 3
+
 ## 48.2.1 [#1357](https://github.com/openfisca/openfisca-france/pull/1357)
 
 * Changement mineur
