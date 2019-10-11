@@ -3,7 +3,6 @@
 import os
 
 import yaml
-from yaml import SafeLoader
 
 from openfisca_core.taxbenefitsystems import TaxBenefitSystem
 from openfisca_france.conf.cache_blacklist import \
@@ -32,11 +31,6 @@ class FranceTaxBenefitSystem(TaxBenefitSystem):
 
         self.add_variables_from_directory(os.path.join(COUNTRY_DIR, 'model'))
 
-        # decomposition_path = os.path.join(COUNTRY_DIR, 'model', 'decomposition.yaml')
-        # with open(decomposition_path, 'r') as yaml_file:
-        #     decomposition_tree = yaml.load(yaml_file, Loader = SafeLoader)
-        # self.add_variables_from_decomposition_tree(decomposition_tree)
-
         self.cache_blacklist = conf_cache_blacklist
 
         self.open_api_config = {
@@ -51,3 +45,10 @@ class FranceTaxBenefitSystem(TaxBenefitSystem):
         aides_logement.preload_zone_apl()
         from .model.prelevements_obligatoires.prelevements_sociaux.contributions_sociales import versement_transport
         versement_transport.preload_taux_versement_transport()
+
+    def load_decomposition(self, relative_path = None):
+        if relative_path is None:
+            relative_path = ['model', 'decomposition.yaml']
+        decomposition_path = os.path.join(COUNTRY_DIR, *relative_path)
+        with open(decomposition_path, 'r') as yaml_file:
+            return yaml.load(yaml_file, Loader = yaml.SafeLoader)
